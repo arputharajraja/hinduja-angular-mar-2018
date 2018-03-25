@@ -1,0 +1,91 @@
+<h2>Product Edit</h2>
+
+<p> Product Name {{product.name}}</p>
+
+<p> Brand length  {{brands.length}} </p>
+
+
+<form (ngSubmit)="saveProduct()" 
+      #productForm="ngForm"
+>
+
+  <p *ngIf="productForm.dirty">
+    Form is changed
+  </p>
+
+  <p *ngIf="productForm.invalid">
+      Form is invalid
+  </p>
+
+
+  <label for="name" >Name</label>
+
+  <!-- actual Angular internal -->
+
+  <!--  
+       #productName="ngModel" 
+
+       get reference of ngModel directive instance
+ 
+
+  -->
+  <input name="name" 
+         [ngModel]="product.name" 
+         (ngModelChange)="product.name=$event"
+         
+         required
+         minlength="3"
+
+         #productName="ngModel"
+
+  />
+
+
+  <p *ngIf="productName.invalid">
+    Seems you entered wrong data, 
+    name is required, minimum 3 chars needed
+  </p>
+
+  <label for="year">Year</label>
+
+  <input name="year"
+         [(ngModel)]="product.year"
+         type="number"
+
+         pattern="[0-9]{4}"
+  />
+
+  <label for="price">Price</label>
+
+  <input name="price"
+         [(ngModel)]="product.price"
+         type="number"
+  />
+
+  <label for="brandId">Brand {{product.brandId}}</label>
+  <select name="brandId"
+          [(ngModel)]="product.brandId">
+      <option *ngFor="let brand of brands" 
+              [value]="brand.id"
+      >
+         {{brand.name}}
+      </option>
+  </select>
+
+  <button type="submit">Save</button>
+
+
+</form>
+
+
+<button (click)="reset()">
+  Reset
+</button>
+
+<pre>
+    {{product | json}}
+</pre>
+
+<button (click)="gotoList()">
+  List
+</button>

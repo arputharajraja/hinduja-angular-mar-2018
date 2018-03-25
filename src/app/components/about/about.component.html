@@ -1,0 +1,33 @@
+<h2>About</h2>
+
+
+<!-- ng 4.0 else -->
+<ng-template #listHidden>
+    <p> List is not shown</p>
+  </ng-template>
+  
+<!-- ngFor, ngIf, ngClass, ng-template -->
+
+<button (click)="addMember()">
+  + Member Add
+</button>
+
+<button (click)="empty()">
+    Empty
+</button>
+  
+<!-- *ngFor, *ngIf
+     * structrual directive 
+     add/remove DOM elements 
+-->
+
+<button (click)="show = !show">
+  {{show? "Hide": "Show"}}
+</button>
+
+<ul *ngIf="show == true else listHidden">
+  <li *ngFor="let member of members">
+    {{member.name}}
+  </li>
+</ul>
+ 

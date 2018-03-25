@@ -1,0 +1,42 @@
+<div>
+   <app-header>
+   </app-header>
+<!-- 
+   <mat-checkbox>Check me!</mat-checkbox>
+
+    -->
+    <h2>{{title}}</h2>
+
+    <!-- Step 2: place holder for routed views -->
+
+    <router-outlet>
+    </router-outlet>
+
+<!-- 
+    <app-home></app-home>
+    
+    <app-about></app-about>
+    
+    <app-contact></app-contact> -->
+
+
+    <br />
+    
+    <button (click)="appFooter.setYear(2020)">
+        To Child
+    </button>
+
+    <button (click)="callChildMethod()">
+        Thru view Child
+    </button>
+
+     <!-- event binding () subscription --> 
+     <app-footer #appFooter
+                 [year]="year + 10" 
+                 [x-title]="title"
+                 (contactEvent)="receiveFromChild($event)"
+                 >
+        <p> Contact us: 9:00 to 5:00 PM</p>
+        <p> US time: 8:00 to 4:00 PM</p>
+     </app-footer>
+</div>

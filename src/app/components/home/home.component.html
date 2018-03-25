@@ -1,0 +1,59 @@
+<h2>{{title | uppercase}}</h2>
+
+<p> Currency {{price | currency:'INR'}} </p>
+
+<p> Date {{today | date:'yyyy-MM-dd'  | uppercase}} </p>
+
+
+<p> Power 2^3 => {{2 | power:3}} </p>
+
+
+<p> Power 5^1 => {{5 | power | power:2}} </p>
+
+<p> Power Counter^2 => {{ counter | power:2}} </p> 
+
+<p> Counter <span>{{counter}}</span> </p>
+
+<!-- {{expr}} interpolation
+  results convert to string
+-->
+
+<p> Counter * 10 {{counter * 10}}</p>
+
+<br />
+<!-- 
+<p> Get value:  {{getValue()}}</p> -->
+
+<!-- [expr] property binding -->
+
+<input [value]="counter * 2" appHighlight="yellow" />
+
+<input bind-value="counter * 2" />
+
+
+<button [disabled]="counter % 2 == 1">
+  {{ counter % 2 == 1? "Odd": "Even" }}
+</button>
+
+<br />
+
+
+<!-- (expr) event binding -->
+
+<div (click)="parentClick($event)">
+
+  <!-- $event is a keyword -->
+  
+  <button (click)="increment($event)">
+    +1
+  </button>
+
+  <button on-click="decrement()">
+      -1
+  </button>
+</div>
+
+
+<button (click)="counter = counter * 10">
+    * 10 Exp
+</button>

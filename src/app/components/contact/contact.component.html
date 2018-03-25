@@ -1,0 +1,81 @@
+<h2>Contact</h2>
+
+<p> Power {{4 | power: 3}}</p>
+
+<!-- 
+  ?. elvis operator - null check
+  # reference variable
+  ngSwitch
+  ngClass 
+  interface - custom types
+-->
+
+<div [ngClass]="{addressBorder : true, 
+                highlightBackground: highlight}"
+                
+                (mouseenter)="highlight = true"
+                (mouseleave)="highlight = false"
+                
+                >
+  <p>
+    City: {{address?.city}}
+  </p>
+</div>
+
+<button (click)="selectedCity='chennai'">
+  Chennai
+</button>
+
+<button (click)="selectedCity='bangalore'">
+  Bangalore
+</button>
+
+<button (click)="selectedCity='mumbai'">
+  Mumbai
+</button>
+
+<div [ngSwitch]="selectedCity">
+  <div *ngSwitchCase="'chennai'">
+    
+    <app-address [address]="address" >
+      
+    </app-address>
+
+  </div>
+
+  <div *ngSwitchCase="'bangalore'">
+    <app-address [address]="bangaloreAddress">
+
+    </app-address>
+  </div>
+
+  <div *ngSwitchCase="'mumbai'">
+   
+    <app-address [address]="mumbaiAddress">
+
+    </app-address>
+    
+  </div>
+
+  <div *ngSwitchDefault>
+    <p> No city selected </p>
+  </div>
+</div>
+
+<!-- # for accessing DOM element -->
+<!-- # reference variable -->
+
+<input #cityName  />
+
+<p #para1>
+
+</p>
+
+<button (click)="cityName.focus();
+                 cityName.value='chennai'">
+  Set Focus
+</button>
+
+<button (click)="para1.textContent = cityName.value">
+  Set Text
+</button>
