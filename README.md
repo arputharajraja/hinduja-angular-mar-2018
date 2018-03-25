@@ -1,5 +1,28 @@
 # ProductApp
 
+To the the repository
+
+`git clone https://github.com/nodesense/hinduja-angular-mar-2018`
+
+Then change directory 
+
+`cd hinduja-angular-mar-2018`
+
+To install dependencies
+
+`npm install`
+
+
+To run the application
+
+`ng serve`
+
+To make production build,
+
+`ng build --prod`
+
+Happy learning...
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server
